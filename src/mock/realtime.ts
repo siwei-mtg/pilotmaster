@@ -1,13 +1,5 @@
-export interface AlertRecord {
-  id: string | number
-  deviceId: string
-  time: string | number | Date
-  type: string
-  location: string
-  level: 'high' | 'medium' | 'low'
-  lat?: number
-  lng?: number
-}
+import type { AlertRecord } from '@/types/alert'
+export type { AlertRecord }
 
 export const droneCount = 31
 export const alertCount = 5

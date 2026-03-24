@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, watch } from 'vue'
+import { ref, computed } from 'vue'
 import { NButton } from 'naive-ui'
 import DsGlassTabBar from '@/components/molecules/DsGlassTabBar.vue'
 import type { TabItem } from '@/components/molecules/DsGlassTabBar.vue'

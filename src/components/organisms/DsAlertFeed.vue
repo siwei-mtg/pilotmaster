@@ -3,16 +3,7 @@ import { ref, computed } from 'vue'
 import DsAlertItem from '@/components/molecules/DsAlertItem.vue'
 import DsHudTitle from '@/components/atoms/DsHudTitle.vue'
 
-export interface AlertRecord {
-  id: string | number
-  time: string | number | Date
-  type: string
-  location: string
-  level: 'high' | 'medium' | 'low'
-  lat?: number
-  lng?: number
-  deviceId?: string
-}
+import type { AlertRecord } from '@/types/alert'
 
 const props = defineProps<{
   alerts: AlertRecord[]
