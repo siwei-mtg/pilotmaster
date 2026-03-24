@@ -1,0 +1,91 @@
+import type { GlobalThemeOverrides } from 'naive-ui'
+
+export const darkOverrides: GlobalThemeOverrides = {
+  common: {
+    primaryColor: '#38BDF8',
+    primaryColorHover: '#7DD3FC',
+    primaryColorPressed: '#0EA5E9',
+    bodyColor: '#0B0E17',
+    cardColor: '#111827',
+    modalColor: '#1A2235',
+    tableColor: '#111827',
+    tableColorHover: '#243049',
+    tableColorStriped: '#0F172A',
+    inputColor: '#1A2235',
+    borderColor: 'rgba(56, 189, 248, 0.12)',
+    textColorBase: '#E2E8F0',
+    textColor1: '#E2E8F0',
+    textColor2: '#94A3B8',
+    textColor3: '#64748B',
+    borderRadius: '8px',
+    fontFamily: '"Inter","PingFang SC","Microsoft YaHei",sans-serif',
+  },
+  Button: {
+    textColorPrimary: '#0B0E17',
+    colorPrimary: '#38BDF8',
+    borderRadiusMedium: '8px',
+  },
+  DataTable: {
+    thColor: '#1A2235',
+    tdColor: '#111827',
+    tdColorHover: '#243049',
+    tdColorStriped: '#0F172A',
+    thTextColor: '#94A3B8',
+    tdTextColor: '#E2E8F0',
+    borderColor: 'rgba(56, 189, 248, 0.08)',
+    thFontWeight: '600',
+    paginationMargin: '16px 0 0 0',
+  },
+  Input: {
+    color: '#1A2235',
+    colorFocus: '#1A2235',
+    border: '1px solid rgba(56, 189, 248, 0.12)',
+    borderFocus: '1px solid rgba(56, 189, 248, 0.40)',
+    borderHover: '1px solid rgba(56, 189, 248, 0.25)',
+    textColor: '#E2E8F0',
+    placeholderColor: '#64748B',
+    caretColor: '#38BDF8',
+  },
+  Select: {
+    peers: {
+      InternalSelection: {
+        color: '#1A2235',
+        border: '1px solid rgba(56, 189, 248, 0.12)',
+        textColor: '#E2E8F0',
+        placeholderColor: '#64748B',
+      },
+    },
+  },
+  Menu: {
+    color: '#0B0E17',
+    itemTextColor: '#94A3B8',
+    itemTextColorActive: '#38BDF8',
+    itemIconColor: '#64748B',
+    itemIconColorActive: '#38BDF8',
+    itemColorHover: 'rgba(56, 189, 248, 0.08)',
+    itemColorActive: 'rgba(56, 189, 248, 0.12)',
+  },
+  Tabs: {
+    tabTextColorActiveLine: '#38BDF8',
+    tabTextColorLine: '#94A3B8',
+    barColor: '#38BDF8',
+  },
+  Tag: {
+    borderRadius: '12px',
+  },
+  Pagination: {
+    itemColor: '#1A2235',
+    itemColorActive: '#38BDF8',
+    itemTextColor: '#94A3B8',
+    itemTextColorActive: '#0B0E17',
+    itemBorder: '1px solid rgba(56, 189, 248, 0.12)',
+  },
+  Card: {
+    color: '#111827',
+    borderColor: 'rgba(56, 189, 248, 0.12)',
+    borderRadius: '12px',
+  },
+  Switch: {
+    railColorActive: '#38BDF8',
+  },
+}
