@@ -11,4 +11,14 @@ export default defineConfig({
       '@': resolve(__dirname, 'src'),
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        // GitHub Pages filters out files starting with an underscore by default
+        sanitizeFileName: (name) => {
+          return name.replace(/\0/g, '').replace(/[^a-z0-9.]/gi, '-').replace(/^-+/, '');
+        },
+      },
+    },
+  },
 })
