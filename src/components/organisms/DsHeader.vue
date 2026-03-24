@@ -16,7 +16,7 @@ const mainNav = [
 
 const toolNav = [
   { key: 'settings', label: '管理配置', path: '/settings' },
-  { key: 'screen',   label: '飞手大屏', path: '/screen', external: true },
+  { key: 'screen',   label: '飞手大屏', path: '/screen' },
 ]
 
 const allNavItems = [...mainNav, ...toolNav]
