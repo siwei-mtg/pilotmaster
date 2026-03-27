@@ -12,13 +12,6 @@ export default defineConfig({
     },
   },
   build: {
-    rollupOptions: {
-      output: {
-        // GitHub Pages filters out files starting with an underscore by default
-        sanitizeFileName: (name) => {
-          return name.replace(/\0/g, '').replace(/[^a-z0-9.]/gi, '-').replace(/^-+/, '');
-        },
-      },
-    },
+    // Vite 5+ with .nojekyll handles assets correctly on GH Pages
   },
 })
