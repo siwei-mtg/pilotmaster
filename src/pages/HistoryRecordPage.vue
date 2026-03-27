@@ -23,16 +23,36 @@ function handleLocationClick(row: any) {
   showMapModal.value = true
 }
 
+function generateRandomPhone() {
+  const prefixes = ['138', '139', '135', '137', '188', '187', '131', '132', '156', '130']
+  const prefix = prefixes[Math.floor(Math.random() * prefixes.length)]
+  const suffix = Math.floor(Math.random() * 90000000 + 10000000).toString()
+  return prefix + suffix
+}
+
+function handleTrace(row: any) {
+  if (row.confidence === 'unknown') {
+    message.info('正在积累数据，暂不支持溯源')
+    return
+  }
+  
+  const phone = generateRandomPhone()
+  row.pilotTrace = phone
+  row.needsUpdate = false
+  message.success(`成功溯源飞手：${phone}`)
+}
+
 function handleUpdateTrace(row: any) {
   if (row.confidence === 'unknown') {
     message.info('正在积累数据，暂不支持溯源')
     return
   }
   
-  // Simulate data backfill
-  row.pilotTrace = row.newPilotTrace
+  // Simulate data backfill with a new phone number
+  const newPhone = generateRandomPhone()
+  row.pilotTrace = newPhone
   row.needsUpdate = false
-  message.success(`成功溯源飞手：${row.pilotTrace}`)
+  message.success(`成功溯源飞手：${newPhone}`)
 }
 
 // ========== 起降记录 ==========
@@ -119,7 +139,7 @@ const flightColumns = [
   { 
     title: '飞手溯源', 
     key: 'pilotTrace', 
-    width: 140,
+    width: 200,
     align: 'center' as const,
     render: (row: any) => {
       const hasPhone = !!row.pilotTrace
@@ -149,7 +169,7 @@ const flightColumns = [
             class: `text-sm cursor-pointer border px-2 py-0.5 rounded transition-colors ${confidenceColorClass}`,
             onClick: (e: Event) => {
               e.stopPropagation()
-              message.info('正在积累数据，暂不支持溯源')
+              handleTrace(row)
             }
           }, '去溯源')
         ])
@@ -198,7 +218,7 @@ const flightColumns = [
       h('span', { class: 'text-primary' }, row.pilotLocation),
     ]),
   },
-  { title: '与自定义位置的距离(米)', key: 'distanceToCustomLocation', width: 180, align: 'center' as const },
+  { title: '与自定义位置的距离(米)', key: 'distanceToCustomLocation', width: 120, align: 'center' as const },
   {
     title: '状态',
     key: 'status',
