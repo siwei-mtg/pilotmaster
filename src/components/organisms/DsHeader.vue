@@ -16,7 +16,7 @@ const mainNav = [
 
 const toolNav = [
   { key: 'settings', label: '管理配置', path: '/settings' },
-  { key: 'screen',   label: '飞手大屏', path: '/screen' },
+  { key: 'screen',   label: '飞手大屏', path: 'http://42.121.194.186:8000/sky/screen' },
 ]
 
 const allNavItems = [...mainNav, ...toolNav]
@@ -26,7 +26,9 @@ const activeKey = computed(() =>
 )
 
 function navigate(item: { path: string; external?: boolean }) {
-  if (item.external) {
+  if (item.path.startsWith('http')) {
+    window.open(item.path, '_blank')
+  } else if (item.external) {
     window.open(router.resolve(item.path).href, '_blank')
   } else {
     router.push(item.path)

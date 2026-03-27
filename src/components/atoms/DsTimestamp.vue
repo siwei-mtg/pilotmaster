@@ -3,7 +3,7 @@ import { computed } from 'vue'
 
 const props = withDefaults(defineProps<{
   time: string | number | Date
-  mode?: 'relative' | 'absolute'
+  mode?: 'relative' | 'absolute' | 'full'
 }>(), {
   mode: 'relative',
 })
@@ -18,6 +18,15 @@ const formatted = computed(() => {
       minute: '2-digit',
       second: '2-digit',
     })
+  }
+  if (props.mode === 'full') {
+    const Y = date.getFullYear()
+    const M = String(date.getMonth() + 1).padStart(2, '0')
+    const D = String(date.getDate()).padStart(2, '0')
+    const h = String(date.getHours()).padStart(2, '0')
+    const m = String(date.getMinutes()).padStart(2, '0')
+    const s = String(date.getSeconds()).padStart(2, '0')
+    return `${Y}-${M}-${D} ${h}:${m}:${s}`
   }
   const now = Date.now()
   const diff = Math.floor((now - date.getTime()) / 1000)

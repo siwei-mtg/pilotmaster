@@ -23,6 +23,8 @@ defineEmits<{
     :columns="columns"
     :data="data"
     :loading="loading"
+    bordered
+    :single-line="false"
     :pagination="pagination !== false ? {
       ...pagination,
       pageSizes: [10, 20, 50],
@@ -33,7 +35,7 @@ defineEmits<{
     :striped="striped ?? true"
     :max-height="maxHeight"
     :row-props="() => ({ class: 'h-12' })"
-    size="small"
+    size="medium"
     @update:page="$emit('update:page', $event)"
     @update:page-size="$emit('update:pageSize', $event)"
   />

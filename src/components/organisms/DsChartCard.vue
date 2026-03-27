@@ -3,8 +3,11 @@ import { ref, onMounted, onUnmounted, watch, shallowRef } from 'vue'
 import * as echarts from 'echarts'
 import { echartsDarkTheme } from '@/design-system/theme/echarts-dark-theme'
 
+import DsHudTitle from '@/components/atoms/DsHudTitle.vue'
+
 const props = defineProps<{
   title: string
+  description?: string
   option: echarts.EChartsOption
   height?: string
   /** 渲染器：'canvas'（默认）或 'svg'。
@@ -40,14 +43,21 @@ onUnmounted(() => {
 
 <template>
   <div class="flex flex-col rounded-xl bg-bg-surface border border-border-default overflow-hidden">
-    <div class="flex items-center justify-between px-5 pt-4 pb-2">
+    <div v-if="title || description || $slots.title || $slots.toolbar" class="flex items-center justify-between px-5 pt-4 pb-2">
       <slot name="title">
-        <h3 class="text-sm font-medium text-text-primary">{{ title }}</h3>
+        <div class="flex flex-col gap-1">
+          <DsHudTitle v-if="title" :text="title" />
+          <p v-if="description" class="text-white text-xs mt-1">{{ description }}</p>
+        </div>
       </slot>
       <div class="flex items-center gap-2">
         <slot name="toolbar" />
       </div>
     </div>
-    <div ref="chartRef" class="w-full" :style="{ height: height ?? '300px' }" />
+    <div class="flex-1 min-h-0 relative">
+      <slot>
+        <div ref="chartRef" class="w-full h-full" :style="{ height: height ?? '300px' }" />
+      </slot>
+    </div>
   </div>
 </template>

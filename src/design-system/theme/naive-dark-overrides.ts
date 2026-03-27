@@ -32,7 +32,7 @@ export const darkOverrides: GlobalThemeOverrides = {
     tdColorStriped: '#0F172A',
     thTextColor: '#94A3B8',
     tdTextColor: '#E2E8F0',
-    borderColor: 'rgba(56, 189, 248, 0.08)',
+    borderColor: 'rgba(255, 255, 255, 0.15)',
     thFontWeight: '600',
     paginationMargin: '16px 0 0 0',
   },

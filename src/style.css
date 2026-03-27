@@ -99,3 +99,8 @@ html, body, #app {
   0%, 100% { opacity: 1; transform: scale(1); }
   50% { opacity: 0.6; transform: scale(1.8); }
 }
+
+/* ===== Naive UI Message Position Override ===== */
+.n-message-container {
+  top: 120px !important;
+}

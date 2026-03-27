@@ -54,6 +54,8 @@ function handleReset() {
           v-else-if="filter.type === 'date-range'"
           v-model:value="values[filter.key]"
           type="daterange"
+          start-placeholder="开始时间"
+          end-placeholder="结束时间"
           :disabled="filter.disabled"
           clearable
           :style="{ width: filter.width ?? '280px' }"
@@ -71,14 +73,14 @@ function handleReset() {
         />
       </template>
 
-      <NButton v-if="hasAdvanced" quaternary size="small" @click="showAdvanced = !showAdvanced">
-        <template #icon><DsIcon :icon="showAdvanced ? 'lucide:chevron-up' : 'lucide:chevron-down'" :size="14" /></template>
+      <NButton v-if="hasAdvanced" quaternary @click="showAdvanced = !showAdvanced">
+        <template #icon><DsIcon :icon="showAdvanced ? 'lucide:chevron-up' : 'lucide:chevron-down'" :size="16" /></template>
         更多筛选
       </NButton>
 
       <div class="flex items-center gap-2 ml-auto">
         <NButton type="primary" @click="handleSearch">
-          <template #icon><DsIcon icon="lucide:search" :size="14" /></template>
+          <template #icon><DsIcon icon="lucide:search" :size="16" /></template>
           查询
         </NButton>
         <NButton text class="text-text-muted!" @click="handleReset">重置</NButton>

@@ -96,7 +96,7 @@ const noflyColumns = [
       }, {
         icon: () => h('svg', {
           xmlns: 'http://www.w3.org/2000/svg',
-          width: 14, height: 14, viewBox: '0 0 24 24',
+          width: 16, height: 16, viewBox: '0 0 24 24',
           fill: 'none', stroke: 'var(--color-primary)',
           'stroke-width': 2, 'stroke-linecap': 'round', 'stroke-linejoin': 'round',
         }, [
@@ -112,7 +112,7 @@ const noflyColumns = [
       }, {
         icon: () => h('svg', {
           xmlns: 'http://www.w3.org/2000/svg',
-          width: 14, height: 14, viewBox: '0 0 24 24',
+          width: 16, height: 16, viewBox: '0 0 24 24',
           fill: 'none', stroke: 'var(--color-danger)',
           'stroke-width': 2, 'stroke-linecap': 'round', 'stroke-linejoin': 'round',
         }, [
@@ -165,7 +165,7 @@ const smsTemplateColumns = [
       }, {
         icon: () => h('svg', {
           xmlns: 'http://www.w3.org/2000/svg',
-          width: 14, height: 14, viewBox: '0 0 24 24',
+          width: 16, height: 16, viewBox: '0 0 24 24',
           fill: 'none', stroke: 'var(--color-primary)',
           'stroke-width': 2, 'stroke-linecap': 'round', 'stroke-linejoin': 'round',
         }, [
@@ -179,7 +179,7 @@ const smsTemplateColumns = [
       }, {
         icon: () => h('svg', {
           xmlns: 'http://www.w3.org/2000/svg',
-          width: 14, height: 14, viewBox: '0 0 24 24',
+          width: 16, height: 16, viewBox: '0 0 24 24',
           fill: 'none', stroke: 'var(--color-danger)',
           'stroke-width': 2, 'stroke-linecap': 'round', 'stroke-linejoin': 'round',
         }, [
@@ -526,7 +526,7 @@ const userColumns = [
       }, {
         icon: () => h('svg', {
           xmlns: 'http://www.w3.org/2000/svg',
-          width: 14, height: 14, viewBox: '0 0 24 24',
+          width: 16, height: 16, viewBox: '0 0 24 24',
           fill: 'none', stroke: 'var(--color-text-secondary)',
           'stroke-width': 2, 'stroke-linecap': 'round', 'stroke-linejoin': 'round',
         }, [
@@ -540,7 +540,7 @@ const userColumns = [
       }, {
         icon: () => h('svg', {
           xmlns: 'http://www.w3.org/2000/svg',
-          width: 14, height: 14, viewBox: '0 0 24 24',
+          width: 16, height: 16, viewBox: '0 0 24 24',
           fill: 'none', stroke: 'var(--color-text-secondary)',
           'stroke-width': 2, 'stroke-linecap': 'round', 'stroke-linejoin': 'round',
         }, [
@@ -555,7 +555,7 @@ const userColumns = [
       }, {
         icon: () => h('svg', {
           xmlns: 'http://www.w3.org/2000/svg',
-          width: 14, height: 14, viewBox: '0 0 24 24',
+          width: 16, height: 16, viewBox: '0 0 24 24',
           fill: 'none', stroke: 'var(--color-danger)',
           'stroke-width': 2, 'stroke-linecap': 'round', 'stroke-linejoin': 'round',
         }, [
@@ -642,7 +642,7 @@ function handlePasswordConfirm(username: string, password: string) {
       >
         <template #actions>
           <NButton type="primary" @click="handleAddZone">
-            <template #icon><DsIcon icon="lucide:plus" :size="14" /></template>
+            <template #icon><DsIcon icon="lucide:plus" :size="16" /></template>
             新增禁飞区
           </NButton>
         </template>
@@ -668,7 +668,7 @@ function handlePasswordConfirm(username: string, password: string) {
       >
         <template #actions>
           <NButton type="primary" @click="handleAddSmsTemplate">
-            <template #icon><DsIcon icon="lucide:plus" :size="14" /></template>
+            <template #icon><DsIcon icon="lucide:plus" :size="16" /></template>
             新增模板
           </NButton>
         </template>
@@ -688,7 +688,7 @@ function handlePasswordConfirm(username: string, password: string) {
       >
         <template #actions>
           <NButton type="primary" @click="handleAddRealtimeActivity">
-            <template #icon><DsIcon icon="lucide:plus" :size="14" /></template>
+            <template #icon><DsIcon icon="lucide:plus" :size="16" /></template>
             新建实时活动
           </NButton>
         </template>
@@ -708,7 +708,7 @@ function handlePasswordConfirm(username: string, password: string) {
       >
         <template #actions>
           <NButton type="primary" @click="handleAddScheduledActivity">
-            <template #icon><DsIcon icon="lucide:plus" :size="14" /></template>
+            <template #icon><DsIcon icon="lucide:plus" :size="16" /></template>
             新建定时活动
           </NButton>
         </template>
@@ -735,7 +735,7 @@ function handlePasswordConfirm(username: string, password: string) {
       >
         <template #actions>
           <NButton type="primary" @click="handleAddUser">
-            <template #icon><DsIcon icon="lucide:user-plus" :size="14" /></template>
+            <template #icon><DsIcon icon="lucide:user-plus" :size="16" /></template>
             新增用户
           </NButton>
         </template>

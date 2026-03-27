@@ -6,6 +6,10 @@ import type { TabItem } from '@/components/molecules/DsGlassTabBar.vue'
 import DsMetricCard from '@/components/molecules/DsMetricCard.vue'
 import DsHudTitle from '@/components/atoms/DsHudTitle.vue'
 import DsChartCard from '@/components/organisms/DsChartCard.vue'
+import DsTechRingChart from '@/components/molecules/DsTechRingChart.vue'
+import DsTechPieChart from '@/components/molecules/DsTechPieChart.vue'
+import DsTechBarChart from '@/components/molecules/DsTechBarChart.vue'
+import DsTechTreeMap from '@/components/molecules/DsTechTreeMap.vue'
 import DsFilterBar from '@/components/molecules/DsFilterBar.vue'
 import { ZHEJIANG_CITIES, CITY_DISTRICTS } from '@/data/zhejiang-regions'
 import type { EChartsOption } from 'echarts'
@@ -208,6 +212,42 @@ const violationDetailOption = computed<EChartsOption>(() =>
     ? violationTimeOption.value
     : violationRepeatOption.value,
 )
+
+// ========== 违规统计 - 飞手画像数据 ==========
+const genderData = [
+  { value: 87.2, name: '男' },
+  { value: 9.8, name: '女' },
+  { value: 3.0, name: '未知' },
+]
+const genderColors = ['#38BDF8', '#F472B6', '#94A3B8']
+
+const droneTypeData = [
+  { value: 165034, name: 'App控' },
+  { value: 112966, name: '屏控' },
+]
+const droneTypeColors = ['#38BDF8', '#818CF8']
+
+const ageData = [
+  { name: '<20', value: 1200 },
+  { name: '20-30', value: 8560 },
+  { name: '30-40', value: 10240 },
+  { name: '40-50', value: 4320 },
+  { name: '>50', value: 1140 },
+]
+
+const residenceData = [
+  { name: '杭州', value: 12500 },
+  { name: '绍兴', value: 7800 },
+  { name: '宁波', value: 4200 },
+  { name: '嘉兴', value: 2500 },
+  { name: '其他', value: 1400 },
+]
+
+// genderDistOption removed as we're using DsTechPieChart component
+
+// ageDistOption removed as we're using DsTechBarChart component
+
+// residenceDistOption removed in favor of DsTechTreeMap
 </script>
 
 <template>
@@ -255,13 +295,8 @@ const violationDetailOption = computed<EChartsOption>(() =>
       </div>
 
       <!-- 趋势图 -->
-      <DsChartCard title="无人机活动趋势" :option="trendChartOption" height="360px">
-        <template #title>
-          <div>
-            <DsHudTitle text="无人机活动趋势" />
-            <p class="text-text-muted text-xs mt-1">展示不同时间维度下的无人机活动数量</p>
-          </div>
-        </template>
+      <DsChartCard title="无人机活动趋势" description="展示不同时间维度下的无人机活动数量" :option="trendChartOption" height="360px">
+
         <template #toolbar>
           <div class="flex bg-bg-elevated rounded-lg p-0.5">
             <NButton
@@ -308,23 +343,12 @@ const violationDetailOption = computed<EChartsOption>(() =>
       <!-- 图表区域 -->
       <div class="grid grid-cols-2 gap-4">
         <!-- 闯禁区域统计 -->
-        <DsChartCard title="闯禁区域统计" :option="barChartOption" height="360px">
-          <template #title>
-            <div>
-              <DsHudTitle text="闯禁区域统计" />
-              <p class="text-text-muted text-xs mt-1">各区域闯禁次数</p>
-            </div>
-          </template>
-        </DsChartCard>
+        <DsChartCard title="闯禁区域统计" description="各区域闯禁次数" :option="barChartOption" height="360px" />
+
 
         <!-- 违规详细分析 -->
-        <DsChartCard title="违规详细分析" :option="violationDetailOption" height="360px">
-          <template #title>
-            <div>
-              <DsHudTitle text="违规详细分析" />
-              <p class="text-text-muted text-xs mt-1">按时段和重复违规者分析</p>
-            </div>
-          </template>
+        <DsChartCard title="违规详细分析" description="按时段和重复违规者分析" :option="violationDetailOption" height="360px">
+
           <template #toolbar>
             <div class="flex bg-bg-elevated rounded-lg p-0.5">
               <NButton
@@ -342,6 +366,64 @@ const violationDetailOption = computed<EChartsOption>(() =>
             </div>
           </template>
         </DsChartCard>
+      </div>
+
+      <!-- 新增统计区域 -->
+      <div class="grid grid-cols-4 gap-4">
+        <!-- 无人机类型统计 -->
+        <div class="col-span-1">
+          <DsChartCard title="无人机类型统计" description="控制方式比例分析" height="400px" :option="{}">
+
+            <div class="w-full h-[320px]">
+              <DsTechRingChart 
+                :data="droneTypeData" 
+                :show-center="false"
+                :colors="droneTypeColors"
+              />
+            </div>
+          </DsChartCard>
+        </div>
+
+        <!-- 飞手画像分析 -->
+        <div class="col-span-3 flex flex-col gap-0 border border-border-default rounded-xl bg-bg-surface overflow-hidden">
+          <div class="px-5 pt-4 pb-2 border-b border-border-default/30 flex items-center justify-between">
+            <div>
+              <DsHudTitle text="飞手画像分析" />
+              <p class="text-white text-xs mt-1">飞手性别、年龄、地域分布透视</p>
+
+            </div>
+          </div>
+          <div class="grid grid-cols-3 gap-0 flex-1">
+            <div class="p-2 border-r border-border-default/20">
+              <p class="text-[13px] font-medium text-white text-center mb-1 drop-shadow-[0_0_4px_rgba(255,255,255,0.4)]">性别分布</p>
+              <div class="h-[240px]">
+                <DsTechPieChart 
+                  :data="genderData" 
+                  title="性别分布" 
+                  :colors="genderColors"
+                />
+              </div>
+            </div>
+            <div class="p-2 border-r border-border-default/20">
+              <p class="text-[13px] font-medium text-white text-center mb-1 drop-shadow-[0_0_4px_rgba(255,255,255,0.4)]">年龄分布</p>
+              <div class="h-[240px]">
+                <DsTechBarChart 
+                  :data="ageData" 
+                  color="#818CF8" 
+                />
+              </div>
+            </div>
+            <div class="p-2">
+              <p class="text-[13px] font-medium text-white text-center mb-1 drop-shadow-[0_0_4px_rgba(255,255,255,0.4)]">常驻地分布</p>
+              <div class="h-[240px]">
+                <DsTechTreeMap 
+                  :data="residenceData" 
+                  :colors="['#10B981', '#34D399', '#3B82F6', '#60A5FA', '#6366F1']" 
+                />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

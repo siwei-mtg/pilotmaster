@@ -12,7 +12,7 @@ const menuItems = [
   { key: 'history', label: '历史记录', icon: 'lucide:history', path: '/history' },
   { key: 'analysis', label: '分析中心', icon: 'lucide:bar-chart-3', path: '/analysis' },
   { key: 'settings', label: '管理配置', icon: 'lucide:settings', path: '/settings' },
-  { key: 'screen', label: '飞手大屏', icon: 'lucide:monitor', path: '/screen' },
+  { key: 'screen', label: '飞手大屏', icon: 'lucide:monitor', path: 'http://42.121.194.186:8000/sky/screen' },
 ]
 
 const activeKey = computed(() => {
@@ -21,7 +21,11 @@ const activeKey = computed(() => {
 })
 
 function navigate(item: typeof menuItems[number]) {
-  router.push(item.path)
+  if (item.path.startsWith('http')) {
+    window.open(item.path, '_blank')
+  } else {
+    router.push(item.path)
+  }
 }
 
 function toggleCollapse() {

@@ -13,7 +13,7 @@ defineProps<{
     </div>
     <!-- HUD Text -->
     <span 
-      class="text-cyan-300 font-bold tracking-[0.15em] text-[13px] drop-shadow-[0_0_6px_rgba(0,255,255,0.6)] uppercase leading-none ml-1"
+      class="text-cyan-300 font-bold tracking-[0.15em] text-base drop-shadow-[0_0_6px_rgba(0,255,255,0.6)] uppercase leading-none ml-1"
     >
       <slot>{{ text }}</slot>
     </span>

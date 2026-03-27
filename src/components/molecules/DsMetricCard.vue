@@ -16,12 +16,15 @@ defineProps<{
 </script>
 
 <template>
-  <div class="relative flex flex-col p-4 rounded-xl bg-bg-elevated border border-border-default transition-all duration-300 hover:border-cyan-500/40 hover:shadow-[0_0_15px_rgba(0,255,255,0.1)] shrink-0 overflow-hidden group">
-    <!-- Subtle tech background grid -->
-    <div class="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.08] transition-opacity" style="background: radial-gradient(circle at center, #00FFFF 1.5px, transparent 1.5px) 0 0/10px 10px;"></div>
+  <div class="group/card relative flex flex-col p-4 rounded-xl bg-[rgba(17,24,39,0.5)] backdrop-blur-md border border-border-default transition-all duration-500 hover:bg-[rgba(26,34,53,0.75)] hover:backdrop-blur-2xl hover:border-border-focus hover:shadow-[0_8px_32px_rgba(0,0,0,0.6)] shrink-0 overflow-hidden">
+    <!-- Tech Glow Decoration Lines on Hover -->
+    <div 
+      class="absolute bottom-0 left-0 h-[2px] w-0 group-hover/card:w-full transition-all duration-700 ease-out z-20 opacity-0 group-hover/card:opacity-100" 
+      style="background-color: #38BDF8; box-shadow: 0 0 12px #38BDF8;"
+    ></div>
 
     <DsHudTitle :text="title" />
-    <p v-if="description" class="text-text-muted text-xs mt-1.5 leading-relaxed relative z-10">{{ description }}</p>
+    <p v-if="description" class="text-white text-xs mt-1.5 leading-relaxed relative z-10">{{ description }}</p>
 
     <div class="relative z-10" :class="description ? 'mt-3' : 'mt-4'">
       <!-- Value -->
@@ -45,11 +48,11 @@ defineProps<{
         <div class="flex items-center justify-center px-1.5 py-0.5 rounded border border-border-default bg-bg-surface-hover">
           <DsTrend :value="trend" />
         </div>
-        <span v-if="trendLabel" class="text-text-muted text-xs">{{ trendLabel }}</span>
+        <span v-if="trendLabel" class="text-white text-xs">{{ trendLabel }}</span>
       </div>
 
       <!-- Bottom text (e.g. "4988架活跃") -->
-      <div v-if="bottomText" class="mt-2 text-text-muted text-xs">
+      <div v-if="bottomText" class="mt-2 text-white text-xs">
         {{ bottomText }}
       </div>
     </div>

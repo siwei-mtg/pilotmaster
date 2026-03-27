@@ -22,7 +22,7 @@ async function copyId() {
 
 <template>
   <span
-    class="inline-flex items-center gap-1 font-mono text-xs text-text-secondary cursor-pointer group"
+    class="inline-flex items-center gap-1 font-mono text-base text-text-primary cursor-pointer group"
     @mouseenter="showFull = true"
     @mouseleave="showFull = false"
   >
