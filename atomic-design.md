@@ -356,6 +356,7 @@ export default function DashboardLayout({
 
 Pages 把 Template + Organisms 组装在一起，注入具体数据。
 
+{% raw %}
 ```jsx
 import DashboardLayout from '@/components/templates/DashboardLayout';
 import Header from '@/components/organisms/Header';
@@ -393,6 +394,7 @@ export default function DashboardPage() {
   );
 }
 ```
+{% endraw %}
 
 ---
 
