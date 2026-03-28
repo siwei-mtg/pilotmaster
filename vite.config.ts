@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite'
 import { resolve } from 'path'
 
 export default defineConfig({
-  base: '/pilotmaster/',
+  base: process.env.VITE_BASE_PATH || '/',
   plugins: [vue(), tailwindcss()],
   resolve: {
     alias: {
