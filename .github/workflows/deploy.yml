@@ -29,6 +29,7 @@ jobs:
         run: npm run build && touch dist/.nojekyll
         env:
           VITE_AMAP_API_KEY: ${{ secrets.VITE_AMAP_API_KEY }}
+          VITE_BASE_PATH: /pilotmaster/
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
